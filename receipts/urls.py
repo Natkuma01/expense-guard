@@ -1,7 +1,8 @@
 from django.urls import path
-from receipts.views import show_receipt, create_receipt, account_list, category_list, create_expense_category
+from receipts.views import show_receipt, create_receipt, account_list, category_list, create_expense_category, create_account
 
 urlpatterns = [
+    path("accounts/create/", create_account, name="create_account"),
     path("categories/create/", create_expense_category, name="create_category"),
     path("accounts/", account_list, name="account_list"),
     path("categories/", category_list, name="category_list"),

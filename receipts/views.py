@@ -61,3 +61,19 @@ def create_expense_category(request):
     }
     return render(request, "receipts/categories/create.html", context)
 
+@login_required
+def create_account(request):
+    if request.method =="POST":
+        form = AccountForm(request.POST)
+        if form.is_valid():
+            account = form.save(False)
+            account.owner = request.user
+            form.save()
+            return redirect("account_list")
+    else:
+        form = AccountForm()
+
+    context = {
+        "form": form
+    }
+    return render(request, "receipts/accounts/create.html", context)
