@@ -24,5 +24,6 @@ def redirect_to_mainpage(request):
 urlpatterns = [
     path("", redirect_to_mainpage, name="main-page"),
     path("receipts/", include("receipts.urls")),
+    path("accounts/", include("accounts.urls")),
     path("admin/", admin.site.urls),
 ]
